@@ -1,12 +1,14 @@
+import { useState } from 'react';
 import Head from 'next/head';
-import Footer from '../components/Footer';
+import Footer from '../components/Footer/index';
 import styles from '../styles/Home.module.css';
 
-export default function Home() {
+export default function Home(): JSX.Element {
+  const [email, setEmail] = useState<string>();
   return (
     <div className={styles.container}>
       <Head>
-        <title>Pokedex</title>
+        <title>Pokedex - Login</title>
         <link rel="icon" href="/pokeball.svg" />
       </Head>
 
@@ -26,11 +28,13 @@ export default function Home() {
           alt="pokeball"
         />
         <input
-          placeholder="Seu melhor e-mail"
           type="text"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+          placeholder="Seu melhor e-mail"
         />
         <div className={styles.submit}>
-          <button>Acessar</button>
+          <button type="button">Acessar</button>
         </div>
       </main>
 
